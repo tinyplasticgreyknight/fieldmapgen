@@ -20,13 +20,13 @@ namespace fieldmapgen {
 		return stream;
 	}
 
-	/// Type-inferring helper function for creating instances of `Option<T>`.
+	/// Type-inferring helper function for creating instances of `Option<T>` which contain a value.
 	template <typename T>
 	Option<T> Some(T value) {
 		return Option<T>(value);
 	}
 
-	/// Type-inferring helper function for creating instances of `Option<T>`.
+	/// Helper function for creating empty instances of `Option<T>`.  Can't infer types but is slightly less painful anyway.
 	template <typename T>
 	Option<T> None(void) {
 		return Option<T>();
@@ -38,12 +38,14 @@ namespace fieldmapgen {
 	class Option {
 	public:
 		/// @brief Creates an empty `Option<T>`.
+		/// @see fieldmapgen::None
 		Option(void)
 			: some(false) {
 		}
 
 		/// @brief Creates an `Option<T>` containing a value.
 		/// @param data The value to store.
+		/// @see fieldmapgen::Some
 		Option(const T& data)
 			: data(data)
 			, some(true) {
