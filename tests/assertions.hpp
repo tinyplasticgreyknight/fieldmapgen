@@ -24,8 +24,8 @@ namespace test_support {
 #define ASSERT_GENERAL(a, msg) if (!(a)) { return test_support::assert_failed(msg, __FILE__, __LINE__); }
 #define ASSERT_THAT(a) ASSERT_GENERAL(a, #a)
 #define ASSERT_TRUE(p) ASSERT_GENERAL(p, "expected true:\nexpression: " #p)
-#define ASSERT_SOME(T, exp, opt) ASSERT_EQ(Option<T>::Some(exp), (opt))
-#define ASSERT_NONE(T, opt) ASSERT_EQ(Option<T>::None(), (opt))
+#define ASSERT_SOME(T, exp, opt) ASSERT_EQ(Some(exp), (opt))
+#define ASSERT_NONE(T, opt) ASSERT_EQ(None<T>(), (opt))
 #define ASSERT_EMPTY(coll) ASSERT_GENERAL((coll).empty(), "expected empty collection\nexpression: " #coll)
 #define ASSERT_LIST_EQ(expected, actual) do { \
 		auto __assertion_exp = expected; \

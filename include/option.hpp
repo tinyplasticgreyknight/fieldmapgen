@@ -23,13 +23,13 @@ namespace fieldmapgen {
 	/// Type-inferring helper function for creating instances of `Option<T>`.
 	template <typename T>
 	Option<T> Some(T value) {
-		return Option<T>::Some(value);
+		return Option<T>(value);
 	}
 
 	/// Type-inferring helper function for creating instances of `Option<T>`.
 	template <typename T>
 	Option<T> None(void) {
-		return Option<T>::None();
+		return Option<T>();
 	}
 
 	/// @brief Checkable container for a value which may not be present (similar to Haskell's `Maybe`).
@@ -37,9 +37,6 @@ namespace fieldmapgen {
 	template <typename T>
 	class Option {
 	public:
-		static Option Some(const T& data) { return Option(data); };
-		static Option None(void) { return Option(); };
-
 		/// @brief Creates an empty `Option<T>`.
 		Option(void)
 			: some(false) {
