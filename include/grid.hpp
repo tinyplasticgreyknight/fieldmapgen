@@ -10,13 +10,17 @@
 namespace fieldmapgen {
 	/// @class Grid
 	/// @brief Easy way of creating a `Graph` with an associated `IField<Point2D>` of node positions.
-	/// @see Graph IField
+	///
+	/// This class provides a number of named constructors that set up a `Graph` and `IField<Point2D>` pair
+	/// according to some particular geometry.  The nodes are laid out using the field, and appropriate
+	/// links are added to complete the grid.
+	/// @see Graph IField Point2D
 	class Grid {
 	public:
 		/// Type of the field points; currently just fixed at `Point2D`.
 		typedef Point2D point;
 	public:
-		/// @brief Creates a square grid with `width * height` nodes.
+		/// @brief Creates a square grid with `width * height` nodes, linked orthogonally.
 		/// @param width The number of nodes per row.
 		/// @param height The number of nodes per column.
 		/// @param cell_width The horizontal spacing between node columns.
