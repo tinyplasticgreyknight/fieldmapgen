@@ -6,10 +6,18 @@
 #include <map>
 
 namespace fieldmapgen {
-
+	/// @class PartialField
+	/// @brief Assigns an optional value to every node of a `Graph`.
+	/// @tparam T The values assigned by the field will be of type `Option<T>`.
+	///
+	/// This class uses efficient storage so that node positions with no assigned value
+	/// don't need to take up any space in memory.
+	/// @see IField TotalField Option
 	template <typename T>
 	class PartialField : public IField<Option<T>> {
 	public:
+		/// @brief Constructs a new field with no values assigned to any node.
+		/// @param graph The graph for which this field assigns values.
 		PartialField(Graph& graph);
 
 	private:

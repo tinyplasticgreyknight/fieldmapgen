@@ -4,6 +4,8 @@
 #include <iterator>
 
 namespace fieldmapgen {
+	/// @class RandomAccessIterator
+	/// @brief A helper class for defining iterators, because C++ is ridiculous.
 	template <typename self_type, typename T, typename distance_type>
 	class RandomAccessIterator {
 	public:

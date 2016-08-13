@@ -4,6 +4,9 @@
 #include "random_access_iterator.hpp"
 
 namespace fieldmapgen {
+	/// @class GraphNodeIterator
+	/// @brief An iterator type for constant iterators over graph nodes.
+	/// @see RandomAccessIterator
 	class GraphNodeIterator : public RandomAccessIterator<GraphNodeIterator, const size_t, std::ptrdiff_t> {
 	public:
 		GraphNodeIterator(size_t position, size_t lower, size_t upper);

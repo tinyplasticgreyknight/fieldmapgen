@@ -5,6 +5,9 @@
 #include "random_access_iterator.hpp"
 
 namespace fieldmapgen {
+	/// @class FieldIterator
+	/// @brief An iterator type for constant iterators over field values.
+	/// @see RandomAccessIterator MutableFieldIterator
 	template <typename TField, typename T, typename TGet>
 	class FieldIterator : public RandomAccessIterator<FieldIterator<TField, T, TGet>, TGet, std::ptrdiff_t> {
 	public:
@@ -30,6 +33,9 @@ namespace fieldmapgen {
 		TField& field;
 	};
 
+	/// @class MutableFieldIterator
+	/// @brief An iterator type for iterators over field values.
+	/// @see RandomAccessIterator FieldIterator
 	template <typename TField, typename T, typename TGet>
 	class MutableFieldIterator : public FieldIterator<TField, T, TGet> {
 	public:
