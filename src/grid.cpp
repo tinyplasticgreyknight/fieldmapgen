@@ -1,6 +1,5 @@
 #include "grid.hpp"
 #include "total_field.hpp"
-#include <iostream>
 
 using namespace fieldmapgen;
 
@@ -27,7 +26,6 @@ void initialise_square_grid_links(Graph* graph, size_t width, size_t height) {
 	};
 	auto link = [graph, address](size_t a, size_t i, size_t j) {
 		auto b = address(i, j);
-		std::cout << "link("<<a<<", "<<b<<")" << std::endl;
 		graph->link(a, b);
 	};
 	for (size_t i = 0; i < x_limit; i++) {

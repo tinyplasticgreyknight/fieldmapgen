@@ -27,23 +27,26 @@ int TestHub::dispatch(string name) {
 	return (iter->second)();
 }
 
-void print_status_string(int status) {
-	string label = status == 0 ? "[PASS]" : "[FAIL]";
+int print_status_string(int status) {
+	string label = status == 0 ? "[OK]" : "[FAILED]";
 	cout << label << endl;
+	return status;
 }
 
 int TestHub::run_all(void) {
-	int status = 0;
+	size_t num_run = 0;
+	size_t num_fail = 0;
 	for (auto entry : this->registry) {
+		num_run++;
 		cout << entry.first << ":" << endl;
 		int entry_status = entry.second();
 		print_status_string(entry_status);
 		if (entry_status != 0) {
-			status = entry_status;
+			num_fail++;
 		}
 	}
 
-	cout << "========" << endl << "OVERALL:" << endl;
-	print_status_string(status);
-	return status;
+	cout << "=================" << endl;
+	cout << "failures: " << num_fail << "/" << num_run << endl;
+	return print_status_string(num_fail != 0);
 }
