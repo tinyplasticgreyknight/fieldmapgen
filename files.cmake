@@ -8,12 +8,16 @@ set(MAIN_SOURCE_FILES
 	src/graph.cpp
 	src/graph_node_iterator.cpp
 	src/field_factory.cpp
+	src/grid.cpp
+	src/point2d.cpp
 )
 
 set(MAIN_HEADER_FILES
 	include/graph.hpp
 	include/graph_node_iterator.hpp
 	include/field_factory.hpp
+	include/grid.hpp
+	include/point2d.hpp
 	include/random_access_iterator.hpp
 	include/field.hpp
 	include/total_field.hpp
@@ -34,6 +38,7 @@ set(TEST_SUITE_FILES
 	tests/test_total_field.cpp
 	tests/test_graph.cpp
 	tests/test_field_factory.cpp
+	tests/test_grid.cpp
 	tests/test_integration.cpp
 )
 
