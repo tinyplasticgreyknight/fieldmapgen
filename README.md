@@ -10,13 +10,13 @@ Currently completely undocumented, but the [integration test](tests/test_integra
 
 To build and run tests:
 
-> cmake .
-> make
-> make test
+    cmake .
+    make
+    make test
 
 To build documentation:
 
-> doxygen
+    doxygen
 
 The project is set up to emit a static library, you can probably hack a shared library out of it if you really need one.
 
