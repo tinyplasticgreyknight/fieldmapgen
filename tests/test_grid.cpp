@@ -15,3 +15,34 @@ TEST_CASE(grid_square_points) {
 	ASSERT_LIST_EQ(expected_pos, actual_pos);
 	return 0;
 }
+
+size_t calc_expected_square_grid_degree(Grid::point point, double x_limit, double y_limit) {
+	auto x_edge = (point.x == 0 || point.x == x_limit);
+	auto y_edge = (point.y == 0 || point.y == y_limit);
+	if (x_edge && y_edge) {
+		return 2;
+	} else if (x_edge || y_edge) {
+		return 3;
+	} else {
+		return 4;
+	}
+}
+
+TEST_CASE(grid_square_num_neighbours) {
+	size_t width = 9;
+	size_t height = 9;
+	double cell_size = 5;
+	double x_limit = (width - 1) * cell_size;
+	double y_limit = (height - 1) * cell_size;
+	Grid subject = Grid::Square(width, height, cell_size, cell_size);
+	Graph& graph = subject.get_graph();
+
+	for (auto n : graph) {
+		auto pt = subject.get_points()->get_value(n);
+		size_t expected_degree = calc_expected_square_grid_degree(pt, x_limit, y_limit);
+		auto neighbours = graph.get_linked(n);
+		ASSERT_EQ(expected_degree, neighbours.size());
+	}
+
+	return 0;
+}
