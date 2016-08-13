@@ -46,7 +46,7 @@ namespace fieldmapgen {
 		/// @param func The results of this function define the initial values of the returned field.
 		/// @return An owned pointer to a new field.
 		template <typename T1, typename TR>
-		IField<TR>* map(IField<T1>* field1, std::function<TR(T1)> func);
+		IField<TR>* map(const IField<T1>* field1, std::function<TR(T1)> func);
 
 		/// @brief Maps the specified function over the values in the input fields, producing a new field from the results.
 		/// @param field1 Values are taken from this field to the first function parameter.
@@ -54,7 +54,7 @@ namespace fieldmapgen {
 		/// @param func The results of this function define the initial values of the returned field.
 		/// @return An owned pointer to a new field.
 		template <typename T1, typename T2, typename TR>
-		IField<TR>* map(IField<T1>* field1, IField<T2>* field2, std::function<TR(T1, T2)> func);
+		IField<TR>* map(const IField<T1>* field1, const IField<T2>* field2, std::function<TR(T1, T2)> func);
 
 		/// @brief Maps the specified function over the values in the input fields, producing a new field from the results.
 		/// @param field1 Values are taken from this field to the first function parameter.
@@ -63,7 +63,7 @@ namespace fieldmapgen {
 		/// @param func The results of this function define the initial values of the returned field.
 		/// @return An owned pointer to a new field.
 		template <typename T1, typename T2, typename T3, typename TR>
-		IField<TR>* map(IField<T1>* field1, IField<T2>* field2, IField<T3>* field3, std::function<TR(T1, T2, T3)> func);
+		IField<TR>* map(const IField<T1>* field1, const IField<T2>* field2, const IField<T3>* field3, std::function<TR(T1, T2, T3)> func);
 
 		/// @brief Maps the specified function over the values in the input fields, producing a new field from the results.
 		/// @param field1 Values are taken from this field to the first function parameter.
@@ -73,7 +73,7 @@ namespace fieldmapgen {
 		/// @param func The results of this function define the initial values of the returned field.
 		/// @return An owned pointer to a new field.
 		template <typename T1, typename T2, typename T3, typename T4, typename TR>
-		IField<TR>* map(IField<T1>* field1, IField<T2>* field2, IField<T3>* field3, IField<T4>* field4, std::function<TR(T1, T2, T3, T4)> func);
+		IField<TR>* map(const IField<T1>* field1, const IField<T2>* field2, const IField<T3>* field3, const IField<T4>* field4, std::function<TR(T1, T2, T3, T4)> func);
 
 	private:
 		Graph& graph;
