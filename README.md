@@ -8,11 +8,15 @@ Currently completely undocumented, but the [integration test](tests/test_integra
 
 # Building
 
-```
-cmake .
-make
-make test
-```
+To build and run tests:
+
+> cmake .
+> make
+> make test
+
+To build documentation:
+
+> doxygen
 
 The project is set up to emit a static library, you can probably hack a shared library out of it if you really need one.
 
