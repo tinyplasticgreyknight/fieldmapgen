@@ -1,6 +1,3 @@
-#ifndef TEMPLATE_FIELD
-#define TEMPLATE_FIELD
-
 template <typename T, typename TGet>
 IField<T, TGet>::IField(Graph& graph)
 	: graph(graph) {
@@ -52,6 +49,3 @@ typename IField<T, TGet>::const_iterator IField<T, TGet>::cend(void) const {
 	const IField<T, TGet>& f = *this;
 	return IField::const_iterator(graph.end(), f);
 }
-
-
-#endif
