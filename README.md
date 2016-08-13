@@ -20,3 +20,4 @@ The project is set up to emit a static library, you can probably hack a shared l
 
 * C++11 compiler
 * [CMake](https://cmake.org/)
+* [Doxygen](http://doxygen.org/) (for building documentation)
