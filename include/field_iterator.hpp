@@ -8,10 +8,10 @@ namespace fieldmapgen {
 	/// @class FieldIterator
 	/// @brief An iterator type for constant iterators over field values.
 	/// @see RandomAccessIterator MutableFieldIterator
-	template <typename TField, typename T, typename TGet>
-	class FieldIterator : public RandomAccessIterator<FieldIterator<TField, T, TGet>, TGet, std::ptrdiff_t> {
+	template <typename TField, typename T>
+	class FieldIterator : public RandomAccessIterator<FieldIterator<TField, T>, T, std::ptrdiff_t> {
 	public:
-		typedef TGet value_type;
+		typedef T value_type;
 
 	public:
 		FieldIterator(Graph::const_iterator graph_iter, TField& field);
@@ -36,10 +36,10 @@ namespace fieldmapgen {
 	/// @class MutableFieldIterator
 	/// @brief An iterator type for iterators over field values.
 	/// @see RandomAccessIterator FieldIterator
-	template <typename TField, typename T, typename TGet>
-	class MutableFieldIterator : public FieldIterator<TField, T, TGet> {
+	template <typename TField, typename T>
+	class MutableFieldIterator : public FieldIterator<TField, T> {
 	public:
-		typedef TGet value_type;
+		typedef T value_type;
 
 	public:
 		MutableFieldIterator(Graph::const_iterator graph_iter, TField& field);

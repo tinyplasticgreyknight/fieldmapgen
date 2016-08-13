@@ -8,15 +8,14 @@ namespace fieldmapgen {
 	/// @class IField
 	/// @brief Assigns a value to every node of a `Graph`.
 	/// @tparam T The type of the values assigned by the field.
-	/// @tparam TGet Currently always equal to `T`, will probably be removed.
 	/// @see Graph TotalField PartialField
-	template <typename T, typename TGet=T>
+	template <typename T>
 	class IField {
 	public:
 		/// Iterator type over all values, in node order.
-		typedef MutableFieldIterator<IField<T, TGet>, T, TGet> iterator;
+		typedef MutableFieldIterator<IField<T>, T> iterator;
 		/// Constant iterator type over all values, in node order.
-		typedef FieldIterator<const IField<T, TGet>, const T, const TGet> const_iterator;
+		typedef FieldIterator<const IField<T>, const T> const_iterator;
 	public:
 		/// @brief Constructs a new field over the specified graph
 		/// @param graph The graph for which this field assigns values.
@@ -27,11 +26,11 @@ namespace fieldmapgen {
 		/// @brief Look up the value assigned by the field for a given node.
 		/// @param node The node to look up the value for.
 		/// @return A reference to the value assigned by the field for this node.
-		const TGet& get_value(Graph::node node) const;
+		const T& get_value(Graph::node node) const;
 		/// @brief Look up the value assigned by the field for a given node.
 		/// @param node The node to look up the value for.
 		/// @return A reference to the value assigned by the field for this node.
-		TGet& get_value(Graph::node node);
+		T& get_value(Graph::node node);
 		/// @brief Revert the value for this node to the default value for the field.
 		/// @param node The node for which to remove the value.
 		/// @return The previous value for the node.
@@ -62,8 +61,8 @@ namespace fieldmapgen {
 		IField& operator=(const IField& that) = delete;
 
 	private:
-		virtual const TGet& get_value_internal(Graph::node node) const = 0;
-		virtual TGet& get_value_internal(Graph::node node) = 0;
+		virtual const T& get_value_internal(Graph::node node) const = 0;
+		virtual T& get_value_internal(Graph::node node) = 0;
 		virtual T remove_value_internal(Graph::node node) = 0;
 		virtual bool add_value_internal(Graph::node node, T value) = 0;
 		virtual T set_value_internal(Graph::node node, T value) = 0;
