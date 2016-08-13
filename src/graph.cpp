@@ -33,7 +33,7 @@ void Graph::unlink_oneway(node a, node b) {
 	this->E_in[b].erase(a);
 }
 
-Graph::node_set get_linked_general(const Graph::connections& conn_map, Graph::node n) {
+const Graph::node_set Graph::get_linked_general(const Graph::connections& conn_map, Graph::node n) const {
 	auto iter = conn_map.find(n);
 	if (iter == conn_map.end()) {
 		return Graph::node_set();

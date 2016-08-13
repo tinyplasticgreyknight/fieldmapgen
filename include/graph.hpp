@@ -58,6 +58,8 @@ namespace fieldmapgen {
 		const_iterator cend(void) const;
 
 	private:
+		const node_set get_linked_general(const connections& conn_map, node n) const;
+
 		size_t V_order;
 		connections E_in;
 		connections E_out;
