@@ -29,6 +29,15 @@ T IField<T>::set_value(Graph::node node, T value) {
 }
 
 template <typename T>
+void IField<T>::map_in_place(std::function<T(Graph::node, T)> func) {
+	auto iter = begin();
+	for (auto n : graph) {
+		*iter = func(n, *iter);
+		iter++;
+	}
+}
+
+template <typename T>
 typename IField<T>::iterator IField<T>::begin(void) {
 	return IField::iterator(graph.begin(), *this);
 }

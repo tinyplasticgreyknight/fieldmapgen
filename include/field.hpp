@@ -3,6 +3,7 @@
 
 #include "graph.hpp"
 #include "field_iterator.hpp"
+#include <functional>
 
 namespace fieldmapgen {
 	/// @class IField
@@ -46,6 +47,12 @@ namespace fieldmapgen {
 		/// @param value The new value to set.
 		/// @return The previous value for the node.
 		T set_value(Graph::node node, T value);
+		/// @brief Maps the field's values without creating a new field.
+		/// @param func The function to map.
+		///
+		/// The specified function is applied to every (node, value) pair in the field,
+		/// producing a new field value for that position.
+		void map_in_place(std::function<T(Graph::node, T)> func);
 
 		/// Iterator to the value for node 0.
 		iterator begin(void);

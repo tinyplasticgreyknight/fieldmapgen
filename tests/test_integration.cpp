@@ -20,9 +20,7 @@ TEST_CASE(integration_build_elevation_map) {
 
 	auto field_pos = grid.get_points();
 	auto field_elev = factory.map(field_pos, assign_elev);
-	for (int& elev : *field_elev) {
-		elev = 2 * elev;
-	}
+	field_elev->map_in_place([](Graph::node, int elev) { return 2 * elev; });
 
 	vector<Point2D> actual_pos(field_pos->begin(), field_pos->end());
 	vector<int> actual_elev(field_elev->begin(), field_elev->end());
