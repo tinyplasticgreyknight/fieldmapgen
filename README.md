@@ -1,10 +1,12 @@
 Some C++ datastructures that would be handy for building map generators.
 
-The map grid is modelled as a `Graph` (with a fixed number of nodes), and everything else is done by means of `TotalField<T>`s which assign a value to every node (e.g. elevation, water flux, etc).
-The node's (x, y) position can also be laid out as a field with coordinate pairs as its values.
-There's also a `PartialField<T>` which only assign values to some nodes (might be handy for e.g. settlement locations).
+The map grid is modelled as a [`Graph`](include/graph.hpp) (with a fixed number of nodes), and everything else is done by means of [`IField<T>`](include/field.hpp) instances which assign values to the graph's nodes.
 
-Currently completely undocumented, but the [integration test](tests/test_integration.cpp) should demonstrate the principle.
+The simplest form is the [`TotalField<T>`](include/total_field.hpp), which assign a value to every single node (e.g. elevation, water flux, etc).  The node's (x, y) position can also be laid out as a field with coordinate pairs as its values.
+
+There's also a [`PartialField<T>`](include/partial_field.hpp) which only assign values to some nodes (might be handy for e.g. settlement locations).  This uses efficient storage so that nodes with no values don't take up space in memory.
+
+See the [integration test](tests/test_integration.cpp) for a demonstration of the principle.
 
 # Building
 
