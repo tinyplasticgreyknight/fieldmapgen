@@ -15,7 +15,7 @@ namespace fieldmapgen {
 
 	private:
 		virtual const size_t& dereference(void) const;
-		virtual void set_value(size_t new_value);
+		virtual void set_value(const size_t new_value);
 		virtual void increment(void);
 		virtual void decrement(void);
 		virtual void adjust_value(std::ptrdiff_t offset);

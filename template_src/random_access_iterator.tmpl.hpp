@@ -1,6 +1,3 @@
-using namespace std;
-using namespace fieldmapgen;
-
 template <typename self_type, typename value_type, typename distance_type>
 self_type& RandomAccessIterator<self_type, value_type, distance_type>::operator ++(void) {
 	increment();

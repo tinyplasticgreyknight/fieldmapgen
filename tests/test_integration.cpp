@@ -16,7 +16,7 @@ TEST_CASE(integration_build_elevation_map) {
 	FieldFactory factory(grid.get_graph());
 	vector<Point2D> expected_pos { {0, 0}, {1, 0}, {2, 0}, {0, 1}, {1, 1}, {2, 1}, {0, 2}, {1, 2}, {2, 2} };
 	vector<int> expected_elev { 0, 2, 4, 2, 4, 6, 4, 6, 8 };
-	function<int(Point2D)> assign_elev = [](Point2D pos) { return pos.x + pos.y; };
+	function<int(Point2D)> assign_elev = [](Point2D pos) { return (int)(pos.x + pos.y); };
 
 	auto field_pos = grid.get_points();
 	auto field_elev = factory.map(field_pos, assign_elev);
