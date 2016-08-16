@@ -49,6 +49,8 @@ namespace test_support {
 	static int DUMMY_RVALUE(nm) = REGISTER_TEST(nm); \
 	int nm (void)
 
+#define IGNORE(nm) int nm (void)
+
 #define RUN_ALL_TESTS() test_support::TestHub::instance().run_all()
 
 #define DISPATCH_TEST(name) test_support::TestHub::instance().dispatch(name)

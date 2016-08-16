@@ -9,10 +9,11 @@ using namespace fieldmapgen;
 TEST_CASE(grid_square_points) {
 	vector<Point2D> expected_pos { {0, 0}, {2, 0}, {4, 0}, {0, 5}, {2, 5}, {4, 5}, {0, 10}, {2, 10}, {4, 10} };
 
-	Grid subject = Grid::Square(3, 3, 2, 5);
-	vector<Point2D> actual_pos(subject.get_points()->cbegin(), subject.get_points()->cend());
+	Grid* subject = Grid::Square(3, 3, 2, 5);
+	vector<Point2D> actual_pos(subject->get_points()->cbegin(), subject->get_points()->cend());
 
 	ASSERT_LIST_EQ(expected_pos, actual_pos);
+	delete subject;
 	return 0;
 }
 
@@ -34,15 +35,16 @@ TEST_CASE(grid_square_num_neighbours) {
 	double cell_size = 5;
 	double x_limit = (width - 1) * cell_size;
 	double y_limit = (height - 1) * cell_size;
-	Grid subject = Grid::Square(width, height, cell_size, cell_size);
-	Graph& graph = subject.get_graph();
+	Grid* subject = Grid::Square(width, height, cell_size, cell_size);
+	Graph& graph = subject->get_graph();
 
 	for (auto n : graph) {
-		auto pt = subject.get_points()->get_value(n);
+		auto pt = subject->get_points()->get_value(n);
 		size_t expected_degree = calc_expected_square_grid_degree(pt, x_limit, y_limit);
 		auto neighbours = graph.get_linked(n);
 		ASSERT_EQ(expected_degree, neighbours.size());
 	}
 
+	delete subject;
 	return 0;
 }

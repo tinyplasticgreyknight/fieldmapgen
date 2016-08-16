@@ -26,7 +26,7 @@ namespace fieldmapgen {
 		/// @param cell_width The horizontal spacing between node columns.
 		/// @param cell_height The vertical spacing between node rows.
 		/// @return The new grid created.
-		static Grid Square(size_t width, size_t height, double cell_width, double cell_height);
+		static Grid* Square(size_t width, size_t height, double cell_width, double cell_height);
 		/// Destructor.
 		~Grid(void);
 
@@ -38,7 +38,7 @@ namespace fieldmapgen {
 		Grid(size_t order);
 		Grid(size_t order, std::function<point(Graph::node)> init_func);
 
-		Graph graph;
+		Graph* graph;
 		IField<point>* field_points;
 	};
 }
